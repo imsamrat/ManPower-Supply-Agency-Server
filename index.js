@@ -55,6 +55,14 @@ app.post('/addService', (req, res) => {
 		})
 	})
 })
+app.delete('/delete/:id' ,(req, res) => {
+    const id = ObjectID(req.params.id);
+    servicesCollection.deleteOne({_id: id})
+    .then(result => {
+      res.send(result.deletedCount > 0)
+    })
+  })
+
 
 	// Added Review Information
 	app.post('/addReviews', (req, res) => {
@@ -166,4 +174,4 @@ app.get('/', (req, res) => {
 	res.send('<h1>Welcome to ManPower Supply Server</h1>');
 });
 
-app.listen(process.env.PORT || 5050, () => console.log('I am listening from 8080'));
+app.listen(process.env.PORT || 5050, () => console.log('I am listening from 5050'));
