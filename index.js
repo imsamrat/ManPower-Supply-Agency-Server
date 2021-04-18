@@ -109,10 +109,10 @@ app.delete('/delete/:id' ,(req, res) => {
 	// adding order
     app.post('/addOrder', (req, res) => {
         const newOrder = req.body;
-        orders.insertOne(newOrder)
+        ordersCollection.insertOne(newOrder)
         .then(result => res.send(result.insertedCount > 0))
     })
-	
+
 	// Added Order Information
 	app.post('/addNewOrder', (req, res) => {
 		const file = req.files.file;
